@@ -1,7 +1,5 @@
 <ul class="list-group">
-    <li class="list-group-item">dsa</li>
-    <li class="list-group-item">deas</li>
-    <li class="list-group-item">A third item</li>
-    <li class="list-group-item">A fourth item</li>
-    <li class="list-group-item">And a fifth one</li>
-  </ul>
+  
+  <li *ngFor="let category of categories" 
+  class="list-group-item">{{category.categoryName}}</li>
+</ul>
