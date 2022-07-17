@@ -5,7 +5,7 @@
     <label for="exampleFormControlInput1" class="form-label">Ürün Ara</label>
     <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="arama ifadesi girin">
   </div>
-  
+
   <div class="alert alert-success" 
   *ngIf="filterText">
     {{filterText}} aradınız
@@ -23,13 +23,17 @@
     
          </tr>
     </thead>
-    <tr *ngFor="let product of products">
-        <td>{{product.productId}}</td>
-        <td>{{product.productName |uppercase}}</td>
-        <td>{{product.categoryId}}</td>
-        <td>{{product.unitPrice |currency}}</td>
-        <td>{{product.unitPrice |vatAdded:18 |currency}}</td>
-        <td>{{product.unitsInStock}}</td>
-        
-    </tr>
+    <tbody>
+        <tr *ngFor="let product of products |filterPipe :filterText">
+            <td>{{product.productId}}</td>
+            <td>{{product.productName |uppercase}}</td>
+            <td>{{product.categoryId}}</td>
+            <td>{{product.unitPrice |currency}}</td>
+            <td>{{product.unitPrice |vatAdded:18 |currency}}</td>
+            <td>{{product.unitsInStock}}</td>
+            <td><button (click)="addToCart(product)" type="button" class="btn btn-success btn-xs">Sepete ekle</button></td>
+            
+        </tr>
+    </tbody>
+    
 </table>
